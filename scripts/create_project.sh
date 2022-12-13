@@ -43,6 +43,7 @@ do
 			;;
 		"Quit")
 			CHANGE_DIRECTORY_AT_THE_END=false
+			exit 0
 			break
 			;;
 		*)
