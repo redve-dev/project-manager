@@ -58,5 +58,6 @@ fi
 
 echo "# $PROJECT_NAME\n" > README.md
 git init
+mv gitignore .gitignore # move invalid template to actual .gitignore
 git add .
 git commit -m "init"
