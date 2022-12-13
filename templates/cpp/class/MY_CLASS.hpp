@@ -1,3 +1,4 @@
+#pragma once
 #include <example_header>
 
 class MY_CLASS {
