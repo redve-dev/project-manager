@@ -11,7 +11,7 @@ function CreatePythonProject(){
 	fi
 }
 
-function CreateCPPProject(){
+function CreateCPProject(){
 	echo -n "Enter project name: "
 	read PROJECT_NAME
 	if [[ ! -d $PROJECT_NAME ]]; then
@@ -39,14 +39,15 @@ do
 			CreatePythonProject
 			;;
 		"cpp")
-			CreateCPPProject
+			CreateCPProject
 			;;
 		"Quit")
-			exit 0
+			exit
 			break
 			;;
 		*)
 			echo "Unrecognized option. Please choose again"
+			;;
 	esac
 done
 
