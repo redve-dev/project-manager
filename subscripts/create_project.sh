@@ -23,7 +23,6 @@ function CreateCPProject(){
 		meson setup build
 		cp build/compile_commands.json .
 		CHANGE_DIRECTORY_AT_THE_END=false
-		break
 	else
 		echo "The directory already exist. Aborting"
 	fi
@@ -37,13 +36,14 @@ function main(){
 		case $opt in
 			"python")
 				CreatePythonProject
+				break
 				;;
 			"cpp")
 				CreateCPProject
+				break
 				;;
 			"Quit")
 				exit
-				break
 				;;
 			*)
 				echo "Unrecognized option. Please choose again"
@@ -62,3 +62,5 @@ function main(){
 	git add .
 	git commit -m "init"
 }
+
+main
