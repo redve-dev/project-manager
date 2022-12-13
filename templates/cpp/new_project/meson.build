@@ -1,7 +1,7 @@
-PROJECT_NAME='MY_PROJECT'
-EXECUTABLE_NAME='MY_EXECUTABLE'
-project(PROJECT_NAME, 'cpp',
+project('MY_PROJECT', 'cpp',
   default_options: ['warning_level=3', 'cpp_std=c++20'])
+
+EXECUTABLE_NAME='MY_EXECUTABLE'
 
 src_arr = [
   'main.cpp'
