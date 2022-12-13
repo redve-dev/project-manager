@@ -4,7 +4,7 @@ project('MY_PROJECT', 'c',
 EXECUTABLE_NAME='MY_EXECUTABLE'
 
 src_arr = [
-  'main.cpp'
+  'main.c'
 ]
 
 deps_arr = [
