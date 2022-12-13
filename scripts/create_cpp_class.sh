@@ -16,5 +16,6 @@ for file in `ls`
 do
 	NEW_FILENAME=`echo $file | sed -e "s/MY_CLASS/$CLASS_NAME/g"`
 	mv $file $NEW_FILENAME
+	# change string "MY_CLASS in template, to the class name"
 	sed -i -e "s/MY_CLASS/$CLASS_NAME/g" $NEW_FILENAME
 done
