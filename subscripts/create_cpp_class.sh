@@ -9,7 +9,7 @@ if [[ -d $CLASS_NAME ]]; then
 fi
 
 mkdir $CLASS_NAME
-cp $TEMPLATES_DIRECTORY/cpp/class/* $CLASS_NAME/
+cp $TEMPLATES/cpp/class/* $CLASS_NAME/
 cd $CLASS_NAME
 
 # keep extension of each file, but change its actual name
