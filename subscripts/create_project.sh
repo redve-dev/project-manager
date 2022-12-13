@@ -22,20 +22,39 @@ function CreateCPProject(){
 		sed -i -e "s/MY_EXECUTABLE/$EXECUTABLE_NAME/g" meson.build
 		meson setup build
 		cp build/compile_commands.json .
-		CHANGE_DIRECTORY_AT_THE_END=false
 	else
 		echo "The directory already exist. Aborting"
 	fi
 }
 
-function main(){
+function CreateCProject(){
+	echo -n "Enter project name: "
+	read PROJECT_NAME
+	if [[ ! -d $PROJECT_NAME ]]; then
+		cp -r $TEMPLATES/cpp/new_project_pure_c $PROJECT_NAME
+		cd $PROJECT_NAME
+		sed -i -e "s/MY_PROJECT/$PROJECT_NAME/g" meson.build
+		echo -n "Enter executable name: "
+		read EXECUTABLE_NAME
+		sed -i -e "s/MY_EXECUTABLE/$EXECUTABLE_NAME/g" meson.build
+		meson setup build
+		cp build/compile_commands.json .
+	else
+		echo "The directory already exist. Aborting"
+	fi
+}
+
+function MAIN(){
 	PS3='Select language: '
-	CHANGE_DIRECTORY_AT_THE_END=true
-	select opt in python cpp Quit
+	select opt in python c cpp Quit
 	do
 		case $opt in
 			"python")
 				CreatePythonProject
+				break
+				;;
+			"c")
+				CreateCProject
 				break
 				;;
 			"cpp")
@@ -62,5 +81,4 @@ function main(){
 	git add .
 	git commit -m "init"
 }
-
-main
+MAIN
