@@ -1,4 +1,5 @@
 #!/bin/bash
+LANGUAGES=("python" "cpp")
 
 function CreatePythonProject(){
 	echo -n "Enter project name: "
@@ -11,8 +12,27 @@ function CreatePythonProject(){
 	fi
 }
 
+function CreateCPPProject(){
+	echo -n "Enter project name: "
+	read PROJECT_NAME
+	if [[ ! -d $PROJECT_NAME ]]; then
+		cp -r ../templates/cpp/new_project $PROJECT_NAME
+		cd $PROJECT_NAME
+		sed -i -e "s/MY_PROJECT/$PROJECT_NAME/g" meson.build
+		echo -n "Enter executable name: "
+		read EXECUTABLE_NAME
+		sed -i -e "s/MY_EXECUTABLE/$EXECUTABLE_NAME/g" meson.build
+		meson setup build
+		cp build/compile_commands.json .
+		cd ..
+		break
+	else
+		echo "The directory already exist. Aborting"
+	fi
+}
+
 PS3='Select language: '
-LANGUAGES=("python" "cpp")
+CHANGE_DIRECTORY_AT_THE_END=true
 select opt in ${LANGUAGES[@]} Quit
 do
 	case $opt in
@@ -20,9 +40,19 @@ do
 			CreatePythonProject
 			;;
 		"cpp")
+			CreateCPPProject
+			;;
+		"Quit")
+			CHANGE_DIRECTORY_AT_THE_END=false
 			break
 			;;
+		*)
+			echo "Unrecognized option. Please choose again"
 	esac
+	
 done
 
-#cd $PROJECT_NAME
+if $CHANGE_DIRECTORY_AT_THE_END
+then
+	cd $PROJECT_NAME
+fi
