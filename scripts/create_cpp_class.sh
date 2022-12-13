@@ -1,6 +1,7 @@
 #!/bin/bash
 
-CLASS_NAME=$1
+echo -n "Provide class name: "
+read CLASS_NAME
 
 if [[ -d $CLASS_NAME ]]; then
 	echo "The directory $CLASS_NAME already exist. Terminating"
@@ -8,7 +9,7 @@ if [[ -d $CLASS_NAME ]]; then
 fi
 
 mkdir $CLASS_NAME
-cp ../templates/cpp/class/* $CLASS_NAME/
+cp $TEMPLATES_DIRECTORY/cpp/class/* $CLASS_NAME/
 cd $CLASS_NAME
 
 # keep extension of each file, but change its actual name

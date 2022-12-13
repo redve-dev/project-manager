@@ -4,7 +4,7 @@ function CreatePythonProject(){
 	echo -n "Enter project name: "
 	read PROJECT_NAME
 	if [[ ! -d $PROJECT_NAME ]]; then
-		cp -r ../templates/python/new_project $PROJECT_NAME
+		cp -r $TEMPLATES_DIRECTORY/python/new_project $PROJECT_NAME
 		break
 	else
 		echo "The directory already exist. Aborting"
@@ -15,7 +15,7 @@ function CreateCPProject(){
 	echo -n "Enter project name: "
 	read PROJECT_NAME
 	if [[ ! -d $PROJECT_NAME ]]; then
-		cp -r ../templates/cpp/new_project $PROJECT_NAME
+		cp -r $TEMPLATES_DIRECTORY/cpp/new_project $PROJECT_NAME
 		cd $PROJECT_NAME
 		sed -i -e "s/MY_PROJECT/$PROJECT_NAME/g" meson.build
 		echo -n "Enter executable name: "
@@ -61,3 +61,5 @@ git init
 mv gitignore .gitignore # move invalid template to actual .gitignore
 git add .
 git commit -m "init"
+
+			echo "here"
