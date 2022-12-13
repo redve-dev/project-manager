@@ -1,5 +1,4 @@
 #!/bin/bash
-LANGUAGES=("python" "cpp")
 
 function CreatePythonProject(){
 	echo -n "Enter project name: "
@@ -24,7 +23,7 @@ function CreateCPPProject(){
 		sed -i -e "s/MY_EXECUTABLE/$EXECUTABLE_NAME/g" meson.build
 		meson setup build
 		cp build/compile_commands.json .
-		cd ..
+		CHANGE_DIRECTORY_AT_THE_END=false
 		break
 	else
 		echo "The directory already exist. Aborting"
@@ -33,7 +32,7 @@ function CreateCPPProject(){
 
 PS3='Select language: '
 CHANGE_DIRECTORY_AT_THE_END=true
-select opt in ${LANGUAGES[@]} Quit
+select opt in python cpp Quit
 do
 	case $opt in
 		"python")
@@ -56,3 +55,8 @@ if $CHANGE_DIRECTORY_AT_THE_END
 then
 	cd $PROJECT_NAME
 fi
+
+echo "# $PROJECT_NAME\n" > README.md
+git init
+git add .
+git commit -m "init"
