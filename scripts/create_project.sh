@@ -42,14 +42,12 @@ do
 			CreateCPPProject
 			;;
 		"Quit")
-			CHANGE_DIRECTORY_AT_THE_END=false
 			exit 0
 			break
 			;;
 		*)
 			echo "Unrecognized option. Please choose again"
 	esac
-	
 done
 
 if $CHANGE_DIRECTORY_AT_THE_END
