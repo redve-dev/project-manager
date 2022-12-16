@@ -1,6 +1,7 @@
 #!/bin/bash
 
 function CreatePythonProject(){
+	echo "chuj"
 	echo -n "Enter project name: "
 	read PROJECT_NAME
 	if [[ ! -d $PROJECT_NAME ]]; then
@@ -70,6 +71,7 @@ function MAIN(){
 		esac
 	done
 
+	cd $PROJECT_NAME
 	echo "# $PROJECT_NAME\n" > README.md
 	git init
 	mv gitignore .gitignore # move invalid template to actual .gitignore
