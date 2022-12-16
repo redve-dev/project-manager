@@ -1,17 +1,19 @@
 #!/bin/bash
 
 PS3="Select your choice: "
-export TEMPLATES=$PWD/templates
+# TODO add installer to generate absolute path
+dir='/home/redve/Programming/projects/bash/project-manager'
+export TEMPLATES=$dir/templates
 
 select choose in create_project create_cpp_class Quit
 do
 	case $choose in
 		"create_project")
-			bash subscripts/create_project.sh
+			bash $dir/subscripts/create_project.sh
 			break
 			;;
 		"create_cpp_class")
-			bash subscripts/create_cpp_class.sh
+			bash $dir/subscripts/create_cpp_class.sh
 			break
 			;;
 		"Quit")
