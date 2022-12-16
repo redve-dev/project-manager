@@ -70,11 +70,6 @@ function MAIN(){
 		esac
 	done
 
-	if $CHANGE_DIRECTORY_AT_THE_END
-	then
-		cd $PROJECT_NAME
-	fi
-
 	echo "# $PROJECT_NAME\n" > README.md
 	git init
 	mv gitignore .gitignore # move invalid template to actual .gitignore
