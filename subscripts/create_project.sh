@@ -1,11 +1,11 @@
 #!/bin/bash
 
 function CreatePythonProject(){
-	echo "chuj"
 	echo -n "Enter project name: "
 	read PROJECT_NAME
 	if [[ ! -d $PROJECT_NAME ]]; then
 		cp -r $TEMPLATES/python/new_project $PROJECT_NAME
+		cd $PROJECT_NAME
 	else
 		echo "The directory already exist. Aborting"
 	fi
@@ -71,7 +71,6 @@ function MAIN(){
 		esac
 	done
 
-	cd $PROJECT_NAME
 	echo "# $PROJECT_NAME\n" > README.md
 	git init
 	mv gitignore .gitignore # move invalid template to actual .gitignore
