@@ -1,5 +1,6 @@
 #!/bin/bash
 
+PS3="Select your choice: "
 export TEMPLATES=$PWD/templates
 
 select choose in create_project create_cpp_class Quit
