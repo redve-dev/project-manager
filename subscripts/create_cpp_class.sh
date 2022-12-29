@@ -1,5 +1,6 @@
 #!/bin/bash
 
+clear
 echo -n "Provide class name: "
 read CLASS_NAME
 

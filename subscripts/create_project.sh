@@ -57,6 +57,7 @@ function post_init(){
 }
 
 function MAIN(){
+	clear
 	PS3='Select language: '
 	select opt in python c cpp Quit
 	do
