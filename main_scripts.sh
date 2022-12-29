@@ -5,6 +5,7 @@ PS3="Select your choice: "
 dir='/home/redve/Programming/projects/bash/project-manager'
 export TEMPLATES=$dir/templates
 
+clear
 select choose in create_project create_cpp_class Quit
 do
 	case $choose in
